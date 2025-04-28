@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.serialization)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+
 
 }
 
@@ -68,6 +70,14 @@ dependencies {
     // Constraint Layout
     implementation ("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation ("androidx.constraintlayout:constraintlayout-compose:1.1.1")
+    // Iconos Google
+    implementation("androidx.compose.material:material-icons-extended:1.6.0")
+
+    // Google Maps
+
+    implementation("com.google.maps.android:maps-compose:2.11.4")
+    implementation("com.google.android.gms:play-services-maps:19.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
 
 }
