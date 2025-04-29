@@ -7,10 +7,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mapsapp.ui.screens.PermissionsScreen
+import com.example.mapsapp.viewmodels.PrincipalViewModel
 
 @Composable
 
-fun MainNavigationWrapper(){
+fun MainNavigationWrapper(viewModel: PrincipalViewModel){
     val navController = rememberNavController()
     NavHost(navController, Destination.Permissions) {
 
@@ -20,7 +21,7 @@ fun MainNavigationWrapper(){
             }
         }
         composable<Destination.Drawer> {
-            DraweScreen()
+            DraweScreen(viewModel)
         }
     }
 }

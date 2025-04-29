@@ -36,7 +36,6 @@ import com.example.mapsapp.viewmodels.PermissionViewModel
 fun PermissionsScreen(navigateToDrawe: () -> Unit) {
 
 
-
     val activity = LocalContext.current as Activity
     val viewModel = viewModel<PermissionViewModel>()
     val permissions = listOf(
@@ -116,7 +115,6 @@ fun PermissionsScreen(navigateToDrawe: () -> Unit) {
             }
         }
     }
-
 
 
 }

@@ -1,3 +1,4 @@
+import androidx.collection.floatSetOf
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
@@ -21,22 +22,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.navigation.compose.rememberNavController
-import com.example.mapsapp.ui.navigation.InternalNavegationWrapper
+import com.example.mapsapp.ui.navigation.InternalNavegationWrapperFun
 import com.example.mapsapp.utils.DrawerItem
+import com.example.mapsapp.viewmodels.PrincipalViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DraweScreen() {
+fun DraweScreen(viewModel: PrincipalViewModel) {
     val navController = rememberNavController()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     var selectedItemIndex by remember { mutableStateOf(0) }
     ModalNavigationDrawer(
+        gesturesEnabled = false,
         drawerContent = {
             ModalDrawerSheet {
                 DrawerItem.entries.forEachIndexed { index, drawerItem ->
                     NavigationDrawerItem(
+
                         icon = { Icon(imageVector = drawerItem.icon, contentDescription = drawerItem.text) },
                         label = { Text(text = drawerItem.text) },
                         selected = index == selectedItemIndex,
@@ -64,7 +68,7 @@ fun DraweScreen() {
             }
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
-                InternalNavegationWrapper()
+                InternalNavegationWrapperFun(navController,viewModel )
             }
         }
     }

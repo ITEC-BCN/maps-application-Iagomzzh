@@ -13,5 +13,5 @@ enum class DrawerItem(
     val route: Destination
 ) {
     HOME(Icons.Default.Map, "Home", Destination.Map),
-    SETTINGS(Icons.Default.FilterList, "Settings", Destination.List),
+    SETTINGS(Icons.Default.FilterList, "Lista de marcadores", Destination.ListMarker)
 }

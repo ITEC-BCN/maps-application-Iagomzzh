@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mapsapp.ui.navigation.MainNavigationWrapper
 import com.example.mapsapp.ui.theme.MapsAppTheme
+import com.example.mapsapp.viewmodels.PrincipalViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MapsAppTheme {
-                MainNavigationWrapper()
+                val viewModel = PrincipalViewModel()
+                MainNavigationWrapper(viewModel)
             }
 
         }

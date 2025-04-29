@@ -1,5 +1,6 @@
 package com.example.mapsapp.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,7 +11,7 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun MapsScreen(modifier: Modifier = Modifier) {
+fun MapsScreen(modifier: Modifier = Modifier, navigateToCreateMarker: (Double, Double) -> Unit) {
     Column(modifier.fillMaxSize()) {
         val itb = LatLng(41.4534225, 2.1837151)
         val cameraPositionState = rememberCameraPositionState {
@@ -18,7 +19,11 @@ fun MapsScreen(modifier: Modifier = Modifier) {
         }
         GoogleMap(
             modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState
+            cameraPositionState = cameraPositionState,
+            onMapLongClick = {
+
+                lat ->             Log.d("CHIVATOOO01", "antes de navegar al  createMarker")
+                navigateToCreateMarker(lat.longitude, lat.longitude)}
         )
     }
 }

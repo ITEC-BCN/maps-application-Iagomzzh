@@ -2,7 +2,8 @@ package com.example.mapsapp.ui.navigation
 
 import kotlinx.serialization.Serializable
 
-sealed class Destination {
+
+sealed class Destination() {
     @Serializable
     object Permissions : Destination()
 
@@ -13,14 +14,9 @@ sealed class Destination {
     object Map : Destination()
 
     @Serializable
-    object List : Destination()
+    object ListMarker : Destination()
 
-
-//    @Serializable
-//    data class MarkerCreation(coordenadas: Int)
-//
-//    @Serializable
-//    data class MarkerDetail(id: Int)
-
+    @Serializable
+    data class MarkerCreation(val lat:Double, val alt: Double) : Destination()
 
 }
