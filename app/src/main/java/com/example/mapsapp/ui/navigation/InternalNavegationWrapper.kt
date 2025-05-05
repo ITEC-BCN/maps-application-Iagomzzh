@@ -1,11 +1,9 @@
 package com.example.mapsapp.ui.navigation
 import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.mapsapp.ui.navigation.Destination.MarkerCreation
 import com.example.mapsapp.ui.screens.CreateMarkerScreen
@@ -20,20 +18,20 @@ fun InternalNavegationWrapperFun(navController: NavHostController, viewModel: Pr
     NavHost(navController, Destination.Map) {
 
         composable<Destination.Map> {
-            MapsScreen(){ coordenadasAlt, coordenadasLat -> navController.navigate(MarkerCreation(coordenadasAlt, coordenadasLat))
+            MapsScreen(viewModel){ coordenadasAlt, coordenadasLat -> navController.navigate(MarkerCreation(coordenadasAlt, coordenadasLat))
 
             }
         }
         composable<Destination.ListMarker> {
-            MarkerList()
+            MarkerList(viewModel)
         }
 
         composable<MarkerCreation> { backStackEntry ->
             Log.d("CHIVATOOO01", "Antes del POPI createMarker")
 
-            val popi = backStackEntry.toRoute<MarkerCreation>()
+            val params = backStackEntry.toRoute<Destination.MarkerCreation>()
             Log.d("CHIVATOOO01", "Antes del createMarker")
-            CreateMarkerScreen(viewModel,popi.lat, popi.alt)
+            CreateMarkerScreen(viewModel, params.lat, params.alt) { navController.navigate(Destination.Map) }
             Log.d("CHIVATOOO01", "Despues del createMarker")
 
         }

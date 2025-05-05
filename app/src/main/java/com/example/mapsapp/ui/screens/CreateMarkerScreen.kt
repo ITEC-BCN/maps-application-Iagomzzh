@@ -18,14 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.mapsapp.viewmodels.PrincipalViewModel
 
 @Composable
-fun CreateMarkerScreen(viewModel: PrincipalViewModel, lat: Double, alt: Double) {
-    Log.d("CHIVATOOO01", "Entro en el CreateMarker, ${lat}, ${alt}")
+fun CreateMarkerScreen(viewModel: PrincipalViewModel, x: Double, y: Double, navigate: () -> Unit, ) {
+    Log.d("CHIVATOOO01", "Entro en el CreateMarker, ${x}, ${y}")
 
 
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -82,7 +81,16 @@ fun CreateMarkerScreen(viewModel: PrincipalViewModel, lat: Double, alt: Double) 
 
                 })
         Button(
-            onClick = {}, modifier = Modifier
+            onClick = {
+                viewModel.createMarcador(
+                    x,
+                    y,
+                    titleMarker.value,
+                    descriptionMarker.value
+                )
+                navigate()
+
+            }, modifier = Modifier
                 .constrainAs(buttonAdd) {
                     top.linkTo(guideTopButton)
                     start.linkTo(parent.start)
