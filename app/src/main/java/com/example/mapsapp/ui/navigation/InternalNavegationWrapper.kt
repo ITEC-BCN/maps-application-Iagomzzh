@@ -1,6 +1,4 @@
 package com.example.mapsapp.ui.navigation
-
-
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
@@ -22,7 +20,7 @@ fun InternalNavegationWrapperFun(navController: NavHostController, viewModel: Pr
     NavHost(navController, Destination.Map) {
 
         composable<Destination.Map> {
-            MapsScreen(){ coordenadasAlt, coordenadasLat -> navController.navigate(MarkerCreation)
+            MapsScreen(){ coordenadasAlt, coordenadasLat -> navController.navigate(MarkerCreation(coordenadasAlt, coordenadasLat))
 
             }
         }
