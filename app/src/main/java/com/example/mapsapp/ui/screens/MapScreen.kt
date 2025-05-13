@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import com.example.mapsapp.viewmodels.PrincipalViewModel
@@ -21,6 +22,10 @@ fun MapsScreen(
     modifier: Modifier = Modifier,
     navigateToCreateMarker: (Double, Double) -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.getAllMarkers()
+
+    }
     val markers = viewModel.listaMarcadores.observeAsState(emptyList())
     val initialPosition = LatLng(41.4534225, 2.1837151)
     val cameraPositionState = rememberCameraPositionState {
@@ -38,9 +43,9 @@ fun MapsScreen(
         ) {
             markers.value.forEach { marcador ->
                 Marker(
-                    state = MarkerState(position = marcador.coordenadas),
-                    title = marcador.nombreMarcador,
-                    snippet = marcador.descripcionMarcador
+                    state = MarkerState( LatLng(marcador.latitude, marcador.longitude)),
+                    title = marcador.nombre_marcador,
+                    snippet = marcador.descripcion_marcador
                 )
             }
         }

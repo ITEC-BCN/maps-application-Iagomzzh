@@ -36,12 +36,12 @@ android {
         buildConfigField(
             type = "String",
             name = "SUPABASE_URL",
-            value = "\"${localProps.getProperty("supabaseUrl") ?: ""}\""
+            value = "\"${localProps.getProperty("https://nqcvfzxjrkqynmhykmvv.supabase.co") ?: ""}\""
         )
         buildConfigField(
             type = "String",
             name = "SUPABASE_KEY",
-            value = "\"${localProps.getProperty("supabaseKey") ?: ""}\""
+            value = "\"${localProps.getProperty("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xY3ZmenhqcmtxeW5taHlrbXZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU4Mjc4NTUsImV4cCI6MjA2MTQwMzg1NX0.m0JobXeoahlMYAr2GyveDbta-blW_RLbFe44fsv3fsg") ?: ""}\""
         )
 
     }
@@ -89,7 +89,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     // MVVM y LiveData
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.7.8")
     // Constraint Layout
     implementation ("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -102,6 +102,12 @@ dependencies {
     implementation("com.google.maps.android:maps-compose:2.11.4")
     implementation("com.google.android.gms:play-services-maps:19.2.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    // Supabase database
+
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.1.4"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.ktor:ktor-client-android:3.1.2")
 
 
 }

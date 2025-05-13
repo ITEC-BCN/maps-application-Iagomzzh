@@ -15,13 +15,19 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.mapsapp.utils.PermissionStatus
 import com.example.mapsapp.viewmodels.PrincipalViewModel
 
 @Composable
 fun MarkerList(viewModel: PrincipalViewModel) {
+    LaunchedEffect(Unit) {
+       viewModel.getAllMarkers()
+
+    }
     val markers = viewModel.listaMarcadores.observeAsState(emptyList())
     LazyColumn(
         modifier = Modifier
@@ -38,12 +44,12 @@ fun MarkerList(viewModel: PrincipalViewModel) {
                     .fillMaxWidth()
                     .padding(16.dp)) {
                     Text(
-                        text = "Nombre: ${marker.nombreMarcador}",
+                        text = "Nombre: ${marker.nombre_marcador}",
                         style = MaterialTheme.typography.titleMedium
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Descripción: ${marker.descripcionMarcador}",
+                        text = "Descripción: ${marker.descripcion_marcador}",
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }

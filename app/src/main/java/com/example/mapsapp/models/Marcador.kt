@@ -1,11 +1,16 @@
 package com.example.mapsapp.models
 
 import com.google.android.gms.maps.model.LatLng
+import kotlinx.serialization.Serializable
 
-class Marcador(
-    val coordenadas: LatLng,
-    val nombreMarcador: String,
-    val descripcionMarcador: String
+@Serializable
+
+data class Marcador(
+    val id: Int = 0,
+    val latitude: Double,
+    val longitude: Double,
+    val nombre_marcador: String,
+    val descripcion_marcador: String
 ) {
 
 
