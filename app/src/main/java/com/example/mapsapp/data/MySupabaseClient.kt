@@ -9,10 +9,13 @@ import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.exception.PostgrestRestException
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.storage.Storage
+import io.github.jan.supabase.storage.storage
 
 
 class MySupabaseClient() {
     lateinit var client: SupabaseClient
+    lateinit var storage: Storage
 
     constructor(supabaseUrl: String, supabaseKey: String) : this() {
         client = createSupabaseClient(
@@ -20,7 +23,11 @@ class MySupabaseClient() {
             supabaseKey = supabaseKey
         ) {
             install(Postgrest)
+            install(Storage)
         }
+        storage = client.storage
+
+
     }
 
     suspend fun getAllMarkers(): List<Marcador> {
