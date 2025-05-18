@@ -1,4 +1,5 @@
 package com.example.mapsapp.ui.navigation
+
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -18,7 +19,8 @@ fun InternalNavegationWrapperFun(navController: NavHostController, viewModel: Pr
     NavHost(navController, Destination.Map) {
 
         composable<Destination.Map> {
-            MapsScreen(viewModel){ coordenadasAlt, coordenadasLat -> navController.navigate(MarkerCreation(coordenadasAlt, coordenadasLat))
+            MapsScreen(viewModel) { coordenadasAlt, coordenadasLat ->
+                navController.navigate(MarkerCreation(coordenadasAlt, coordenadasLat))
 
             }
         }
@@ -31,7 +33,11 @@ fun InternalNavegationWrapperFun(navController: NavHostController, viewModel: Pr
 
             val params = backStackEntry.toRoute<Destination.MarkerCreation>()
             Log.d("CHIVATOOO01", "Antes del createMarker")
-            CreateMarkerScreen(viewModel, params.lat, params.alt) { navController.navigate(Destination.Map) }
+            CreateMarkerScreen(viewModel, params.lat, params.alt) {
+                navController.navigate(
+                    Destination.Map
+                )
+            }
             Log.d("CHIVATOOO01", "Despues del createMarker")
 
         }

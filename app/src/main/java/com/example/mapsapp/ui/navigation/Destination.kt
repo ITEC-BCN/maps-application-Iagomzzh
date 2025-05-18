@@ -17,6 +17,6 @@ sealed class Destination() {
     object ListMarker : Destination()
 
     @Serializable
-    data class MarkerCreation(val lat:Double, val alt: Double) : Destination()
+    data class MarkerCreation(val lat: Double, val alt: Double) : Destination()
 
 }

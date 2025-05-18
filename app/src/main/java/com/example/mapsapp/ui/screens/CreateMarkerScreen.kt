@@ -39,7 +39,7 @@ import com.example.mapsapp.viewmodels.PrincipalViewModel
 import java.io.File
 
 @Composable
-fun CreateMarkerScreen(viewModel: PrincipalViewModel, x: Double, y: Double, navigate: () -> Unit, ) {
+fun CreateMarkerScreen(viewModel: PrincipalViewModel, x: Double, y: Double, navigate: () -> Unit) {
     Log.d("CHIVATOOO01", "Entro en el CreateMarker, ${x}, ${y}")
     val context = LocalContext.current
     val imageUri = remember { mutableStateOf<Uri?>(null) }
@@ -151,8 +151,9 @@ fun CreateMarkerScreen(viewModel: PrincipalViewModel, x: Double, y: Double, navi
                     end.linkTo(parent.end)
 
 
-                }.clickable{
-                      showDialog = true
+                }
+                .clickable {
+                    showDialog = true
 
                 })
         Button(

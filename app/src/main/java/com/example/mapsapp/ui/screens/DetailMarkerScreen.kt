@@ -1,4 +1,5 @@
 package com.example.mapsapp.ui.screens
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+
 @Composable
 fun DetailMarkerScreen() {
 
@@ -37,27 +39,39 @@ fun DetailMarkerScreen() {
 
             })
 
-        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null, modifier = Modifier.constrainAs(flechaIrParaAtras) {
+        Icon(
+            imageVector = Icons.Default.ArrowBack,
+            contentDescription = null,
+            modifier = Modifier
+                .constrainAs(flechaIrParaAtras) {
 
-            start.linkTo(parent.start)
-            end.linkTo(tituloPagina.start)
-            top.linkTo(createTopGuideForArrowBack)
-        }.size(30.dp))
+                    start.linkTo(parent.start)
+                    end.linkTo(tituloPagina.start)
+                    top.linkTo(createTopGuideForArrowBack)
+                }
+                .size(30.dp)
+        )
 
-        OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.constrainAs(nombreMarcador) {
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            modifier = Modifier.constrainAs(nombreMarcador) {
 
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            top.linkTo(tituloPagina.bottom, margin = 45.dp)
-        })
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(tituloPagina.bottom, margin = 45.dp)
+            })
 
 
-        OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.constrainAs(descripcionMarcador) {
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            modifier = Modifier.constrainAs(descripcionMarcador) {
 
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            top.linkTo(nombreMarcador.bottom, margin = 45.dp)
-        })
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(nombreMarcador.bottom, margin = 45.dp)
+            })
 
         Icon(
             imageVector = Icons.Filled.CameraAlt,
@@ -73,11 +87,7 @@ fun DetailMarkerScreen() {
                 })
 
 
-
     }
-
-
-
 
 
 }

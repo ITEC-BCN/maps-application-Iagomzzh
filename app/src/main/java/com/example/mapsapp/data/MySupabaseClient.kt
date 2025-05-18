@@ -1,8 +1,6 @@
 package com.example.mapsapp.data
 
-import android.net.http.HttpResponseCache.install
 import android.util.Log
-import com.example.mapsapp.MyApp.Companion.database
 import com.example.mapsapp.models.Marcador
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
